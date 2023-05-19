@@ -1,12 +1,8 @@
-import { useContext, useState } from "react"
+import { useState } from "react"
 
 import { useNavigate } from 'react-router-dom'
 
-import { AuthContext } from "../context/auth.context"
-import { LoadingContext } from "../context/loading.context"
-
 import { post } from "../services/authService"
-import { Navigate } from "react-router-dom"
 
 
 const AddPost = () => {
@@ -26,6 +22,7 @@ const AddPost = () => {
     .then((results) => {
       console.log('new post', results.data)
       setAddPost('')
+      navigate('/posts')
 
     })
     .catch((err) => {
@@ -37,7 +34,7 @@ const AddPost = () => {
     <div>
     
        <form onChange={handleSubmit}>
-        <input type='text' name='post' value={addPost} onChange={handleAddPost} placeholder="what's on your mind?"/>
+        <input type='text' name='post' onChange={handleAddPost} placeholder="what's on your mind?"/>
         <button type="submit">Submit</button>
        </form>
 

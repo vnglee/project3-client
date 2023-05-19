@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
-import Post from './components/AddPost';
+import Post from './pages/Post';
 
 function App() {
 
