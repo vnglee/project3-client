@@ -7,21 +7,21 @@ import AddPost from "../components/AddPost"
 
 const Post = () => {
 
-// const [posts, setPosts] = useState([])
+const [posts, setPosts] = useState([])
 
-// const getAllPosts = () => {
-//   get('/posts')
-//   .then((results) => {
-//     setPosts(results.data)
-//   })
-//   .catch((err) => {
-//     console.log(err)
-//   })
-// }
+const getAllPosts = () => {
+  get('/posts')
+  .then((results) => {
+    setPosts(results.data)
+  })
+  .catch((err) => {
+    console.log(err)
+  })
+}
 
-// useEffect(() => {
-//   getAllPosts()
-// }, [])
+useEffect(() => {
+  getAllPosts()
+}, [])
 
   return (
     <div>
