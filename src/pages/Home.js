@@ -1,5 +1,5 @@
 import AddPost from "../components/AddPost"
-import Post from "./Post"
+import Post from "./Posts"
 import { LoadingContext } from "../context/loading.context"
 import { useContext } from "react"
 
@@ -18,7 +18,7 @@ const Home = () => {
     <div>
         <h3>{user.name}</h3>
         {/* style profile pic */}
-        <img src={user.profilePic} alt='profile' />
+        <img className="scale-50" src={user.profilePic} alt='profile' />
     </div>
     }
 

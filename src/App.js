@@ -7,7 +7,7 @@ import Login from './pages/Login';
 import Navbar from './components/Navbar';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
-import Post from './pages/Post';
+import Posts from './pages/Posts';
 
 function App() {
 
@@ -49,7 +49,7 @@ function App() {
     <Route element={<LoggedIn />}>
         <Route path='/profile' element={<Profile />} />
         <Route path='/profile/:id' element={<EditProfile/>}/>
-        <Route path='/posts' element={<Post/>} />
+        <Route path='/posts' element={<Posts/>} />
     </Route>
 
 

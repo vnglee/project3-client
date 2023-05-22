@@ -12,8 +12,8 @@ const Profile = () => {
     {user &&
     <div>
         <h3>{user.name}</h3>
-        <img src={user.profilePic} alt='profile' />
-        <br/>
+        <img className="scale-50" src={user.profilePic} alt='profile' />
+
         <Link to={`/profile/${user._id}`}><button>Edit Profile</button></Link>
     </div>
     

@@ -4,16 +4,41 @@ import { useNavigate } from 'react-router-dom'
 
 import { post } from "../services/authService"
 
+import CreatableSelect from 'react-select/creatable'
+
 
 const AddPost = () => {
 
-  const [addPost, setAddPost] = useState("")
+  const [addPost, setAddPost] = useState({
+    post: "",
+    image: "",
+    type: ""
+  })
 
-  // const navigate = useNavigate()
+  const navigate = useNavigate()
 
-  // const handleChange = (e) => {
-  //   setAddPost((prev) => ({...prev, [e.target.name]: e.target.value}))
-  // }
+  const handleChange = (e) => {
+    setAddPost((prev) => ({...prev, [e.target.name]: e.target.value}))
+  }
+
+
+  const handleSelectChange = (e) => {
+    console.log("this is e", e)
+    if (!e) {
+      setAddPost((prev) => ({
+        post: "",
+        image: "",
+        type: "",
+      }));
+    } else {
+      setAddPost({
+        post: "",
+        image: "",
+        type: e.value,
+      });
+    }
+  };
+
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -21,8 +46,8 @@ const AddPost = () => {
     post('/posts/create', addPost)
     .then((results) => {
       console.log('new post', results.data)
-      setAddPost("")
-      // navigate('/posts')
+      setAddPost({post: ""})
+      navigate('/posts')
 
     })
     .catch((err) => {
@@ -30,12 +55,36 @@ const AddPost = () => {
     })
   }
 
+
+  const theseOptions = [
+    {
+      label: "general",
+      value: "general"
+    },
+    {
+      label: "recipe",
+      value: "recipe"
+    },
+    {
+      label: "review",
+      value: "review"
+    }
+  ];
+
   return (
     <div>
+    <h3>Add Post</h3>
+       <form onSubmit={handleSubmit}>
 
-       <form onChange={handleSubmit}>
-       <label>Add Post</label>
-        <input type='text' name='post' onChange={(e) => setAddPost(e.target.value)} placeholder="what's on your mind?"/>
+        <label>Type:</label>
+        <CreatableSelect id="selector" isClearable options={theseOptions} onChange={handleSelectChange}/>
+
+       <label>Post</label>
+        <textarea name='post' value={addPost.post} onChange={handleChange} placeholder="what's on your mind?"/>
+
+        <label>Image:</label>
+        <input type='text' name='image' value={addPost.image} onChange={handleChange}/>
+
         <button type="submit">Submit</button>
        </form>
 

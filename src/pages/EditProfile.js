@@ -49,10 +49,10 @@ const EditProfile = () => {
       updatedUser ?
 
       <form onSubmit={handleSubmit}>
-        <label htmlFor='name'>Name</label>
+        <label htmlFor='name'>Name:</label>
         <input id="name" name="name" type="text" value={updatedUser.name} onChange={handleTextChange}/>
       
-        <label htmlFor='profilePic'>Profile Picture</label>
+        <label htmlFor='profilePic'>Profile Picture:</label>
         <input id="profilePic" name="profilePic" type="text" value={updatedUser.profilePic} onChange={handleTextChange}/>
       <button type="submit">Update</button>
       </form>
