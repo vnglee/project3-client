@@ -3,6 +3,7 @@ import { LoadingContext } from "../context/loading.context"
 import { AuthContext } from "../context/auth.context"
 import {get} from '../services/authService'
 import AddPost from "../components/AddPost"
+import PostCard from "../components/PostCard"
 
 
 const Post = () => {
@@ -27,6 +28,11 @@ useEffect(() => {
     <div>
      <AddPost />
 
+{posts.map((post) => {
+  return (
+    <PostCard key={post._id} {...post}/>
+  )
+})}
 
 
     </div>

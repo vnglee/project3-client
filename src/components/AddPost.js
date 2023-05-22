@@ -7,13 +7,13 @@ import { post } from "../services/authService"
 
 const AddPost = () => {
 
-  const [addPost, setAddPost] = useState({post: ""})
+  const [addPost, setAddPost] = useState("")
 
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
 
-  const handleChange = (e) => {
-    setAddPost((prev) => ({...prev, [e.target.name]: e.target.value}))
-  }
+  // const handleChange = (e) => {
+  //   setAddPost((prev) => ({...prev, [e.target.name]: e.target.value}))
+  // }
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -22,7 +22,7 @@ const AddPost = () => {
     .then((results) => {
       console.log('new post', results.data)
       setAddPost("")
-      navigate('/posts')
+      // navigate('/posts')
 
     })
     .catch((err) => {
@@ -32,10 +32,10 @@ const AddPost = () => {
 
   return (
     <div>
-        <h3>Posts</h3>
+
        <form onChange={handleSubmit}>
-       <label htmlFor="post">Add Post</label>
-        <input type='text' name='post' id="post" onChange={handleChange} placeholder="what's on your mind?"/>
+       <label>Add Post</label>
+        <input type='text' name='post' onChange={(e) => setAddPost(e.target.value)} placeholder="what's on your mind?"/>
         <button type="submit">Submit</button>
        </form>
 

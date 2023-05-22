@@ -10,9 +10,9 @@ const Home = () => {
     <div>
 
 <h1 className="text-3xl font-bold underline">
-    Hello world!
-  </h1>
     Home
+  </h1>
+ 
     {/* user info on left side */}
     {user &&
     <div>
@@ -22,10 +22,7 @@ const Home = () => {
     </div>
     }
 
-    <div>
-      Posts
-
-    </div>
+   <Post/>
     </div>
   )
 }

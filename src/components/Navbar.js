@@ -11,27 +11,33 @@ const Navbar = () => {
   }
 
   return (
-    <nav>
-    <Link to='/'>Home</Link>
+
+
+   <nav>
+   <Link to='/'>Home</Link>
 
     {
       getToken() ? 
 
-      <>
-    <Link to='/profile'>Profile</Link>
-    <Link to='/posts'>Posts</Link>
-    <button onClick={logOutUser}>Logout</button>
+       <>
+     <Link to='/profile'>Profile</Link>
+   <Link to='/posts'>Posts</Link>
+     <button onClick={logOutUser}>Logout</button>
 
       </>
       :
-      <>
+     <>
 
-    <Link to='/signup'>Signup</Link>
+     <Link to='/signup'>Signup</Link>
     <Link to='/login'>Login</Link>
       </>
     }
-    </nav>
-  )
+     </nav>
+
+
+
+  ) 
 }
 
 export default Navbar
+
