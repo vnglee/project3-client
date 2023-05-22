@@ -12,7 +12,7 @@ const AddPost = () => {
   const [addPost, setAddPost] = useState({
     post: "",
     image: "",
-    type: ""
+    type: "general"
   })
 
   const navigate = useNavigate()
@@ -80,10 +80,10 @@ const AddPost = () => {
         <CreatableSelect id="selector" isClearable options={theseOptions} onChange={handleSelectChange}/>
 
        <label>Post</label>
-        <textarea name='post' value={addPost.post} onChange={handleChange} placeholder="what's on your mind?"/>
+        <textarea name='post' onChange={handleChange} placeholder="what's on your mind?"/>
 
         <label>Image:</label>
-        <input type='text' name='image' value={addPost.image} onChange={handleChange}/>
+        <input type='text' name='image' onChange={handleChange}/>
 
         <button type="submit">Submit</button>
        </form>

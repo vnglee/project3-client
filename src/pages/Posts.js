@@ -5,12 +5,16 @@ import {get} from '../services/authService'
 import AddPost from "../components/AddPost"
 import PostCard from "../components/PostCard"
 import AddComment from "../components/AddComment"
+import EditPosts from "./EditPosts"
+import { Link, useParams } from "react-router-dom"
 
 
 const Posts = () => {
-
+const [search, setSearch] = useState("")
 const [posts, setPosts] = useState([])
 
+const {postId} = useParams
+console.log(search)
 const getAllPosts = () => {
   get('/posts')
   .then((results) => {
@@ -27,17 +31,22 @@ useEffect(() => {
 
   return (
     <div>
+    <label htmlFor="check">Recipes </label>
+    <input type="checkbox" value="recipe" onChange={(e) => {e.target.checked ?  setSearch(e.target.value) : setSearch("")}}/>
      <AddPost />
-
-{posts.map((post) => {
+<br/>
+See Posts:
+<br/><br/>
+{posts.filter((element) => element.type.includes(search)).map((post) => {
   return (
-    <PostCard key={post._id} {...post}/>
+    <PostCard key={post._id} post={post}/>
   )
 })}
 <br/>
+
 <br/>
 <br/>
-<AddComment/>
+{/* <AddComment/> */}
     </div>
   )
 }

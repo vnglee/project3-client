@@ -1,8 +1,10 @@
-import { useState } from "react"
+import { useState, useContext } from "react"
 import { useNavigate } from "react-router-dom"
 import { post } from "../services/authService"
+import { LoadingContext } from "../context/loading.context"
 
 const AddComment = () => {
+
 
 const [addComment, setAddComment] = useState({comment: ""})
 
@@ -19,8 +21,8 @@ const handleSubmit = (e) => {
   post('/comments/add-comments', addComment)
   .then((results) => {
     console.log('new post', results.data)
-    setAddComment({post: ""})
-    navigate('/posts/detail/:id')
+    setAddComment({comment: ""})
+    navigate(`/posts/detail/${post._id}`)
 
   })
   .catch((err) => {
