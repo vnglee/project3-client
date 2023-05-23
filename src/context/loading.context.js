@@ -1,4 +1,5 @@
 import { createContext, useState } from "react";
+import { get } from "../services/authService";
 
 
 const LoadingContext = createContext()
@@ -10,9 +11,19 @@ const LoadingProvider = ({ children }) => {
     const [search, setSearch] = useState("")
     const [posts, setPosts] = useState([])
 
+    const getAllPosts = () => {
+        get('/posts')
+        .then((results) => {
+          setPosts(results.data)
+        })
+        .catch((err) => {
+          console.log(err)
+        })
+      }
+
 
     return (
-        <LoadingContext.Provider value={{ user, isLoading, setIsLoading, setUser, search, setSearch, posts, setPosts }} >
+        <LoadingContext.Provider value={{ user, isLoading, setIsLoading, setUser, search, setSearch, posts, setPosts, getAllPosts }} >
             {children}
         </LoadingContext.Provider>
     )

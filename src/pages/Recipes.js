@@ -1,16 +1,24 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { LoadingContext } from "../context/loading.context"
 import PostCard from "../components/PostCard"
 
 const Recipes = () => {
 
-    const {posts, search} = useContext(LoadingContext)
+    const {posts, search, getAllPosts, setSearch} = useContext(LoadingContext)
+
+
+    useEffect(() => {
+        if (!posts.length) {
+            getAllPosts()
+            setSearch("recipe")
+        }
+    }, [])
 
   return (
     <div>
     <h1>Recipes</h1>
 
-    
+
 
     <>
 

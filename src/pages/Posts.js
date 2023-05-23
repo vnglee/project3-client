@@ -13,19 +13,10 @@ const Posts = () => {
 // const [search, setSearch] = useState("")
 // const [posts, setPosts] = useState([])
 
-const {search, setSearch, posts, setPosts} = useContext(LoadingContext)
+const {search, setSearch, posts, setPosts, getAllPosts} = useContext(LoadingContext)
 // const {postId} = useParams
 
 console.log(search)
-const getAllPosts = () => {
-  get('/posts')
-  .then((results) => {
-    setPosts(results.data)
-  })
-  .catch((err) => {
-    console.log(err)
-  })
-}
 
 useEffect(() => {
   getAllPosts()
@@ -34,11 +25,11 @@ useEffect(() => {
 
   return (
     <div>
-    <label htmlFor="check">Recipes </label>
+    {/* <label htmlFor="check">Recipes </label>
     <input type="checkbox" value="recipe" onChange={(e) => {e.target.checked ?  setSearch(e.target.value) : setSearch("")}}/>
 
     <label htmlFor="check">Reviews </label>
-    <input type="checkbox" value="review" onChange={(e) => {e.target.checked ?  setSearch(e.target.value) : setSearch("")}}/>
+    <input type="checkbox" value="review" onChange={(e) => {e.target.checked ?  setSearch(e.target.value) : setSearch("")}}/> */}
      
      <div>
       <Link to="/recipes"><button onClick={() => setSearch("recipe")}>See Recipes</button></Link>
