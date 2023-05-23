@@ -10,6 +10,8 @@ import EditProfile from './pages/EditProfile';
 import Posts from './pages/Posts';
 import EditPosts from './pages/EditPosts';
 import PostDetails from './pages/PostDetails';
+import Recipes from './pages/Recipes';
+import Reviews from './pages/Reviews';
 
 function App() {
 
@@ -31,8 +33,7 @@ function App() {
     <Navbar/>
 
   <Routes>
-    <Route path='/' element={<Home/>} />
-    <Route path='/profile' element={<Profile/>} />
+
 
     <Route element={<NotLoggedIn/>}>
         <Route path='/signup' element={<Signup/>}/>
@@ -40,11 +41,15 @@ function App() {
     </Route>
 
     <Route element={<LoggedIn />}>
+        <Route path='/' element={<Home/>} />
+        <Route path='/profile' element={<Profile/>} />
         <Route path='/profile' element={<Profile />} />
         <Route path='/profile/:id' element={<EditProfile/>}/>
         <Route path='/posts' element={<Posts/>} />
         <Route path='/posts/edit/:id' element={<EditPosts/>} />
         <Route path='/posts/details/:id' element={<PostDetails/>} />
+        <Route path='/recipes' element={<Recipes/>} />
+        <Route path='/reviews' element={<Reviews/>} />
     </Route>
 
 

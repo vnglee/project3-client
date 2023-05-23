@@ -31,7 +31,7 @@ const PostDetails = ({post, image, type}) => {
     {postDetail && (
         <>
            <p>{postDetail.post}</p>
-           <p>{postDetail.image}</p>
+          <img src={postDetail.image} alt=""/>
            <p>{postDetail.type}</p>
         </>
     )}

@@ -32,6 +32,7 @@ const AddPost = ({posts, setPosts}) => {
       .then((response) => {
         console.log(response.data);
         setAddPost((prev) => ({...prev, [e.target.name]: response.data.image}));
+        // e.target.value = null
         // setButtonDisabled(false);
       })
       .catch((err) => {
@@ -61,13 +62,18 @@ const AddPost = ({posts, setPosts}) => {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-
+    console.log('this is the event', e.target[2])
     post('/posts/create', addPost)
     .then((results) => {
+    
       console.log('new post', results.data)
-      setAddPost("");
       setPosts([ results.data, ...posts])
-     
+      setAddPost({
+        post: "",
+        image: undefined,
+        type: "general",
+      });
+      e.target[2].value = null
       console.log('posts', posts)
       // navigate('/posts')
       console.log('this is post post', addPost)
@@ -110,10 +116,10 @@ const AddPost = ({posts, setPosts}) => {
 
        <label>Post</label>
        <div className="w-96">
-        <Textarea label="Message" name="post" onChange={handleChange} placeholder="what's on your mind?"/>
+        <Textarea label="Message" name="post" value={addPost.post} onChange={handleChange} placeholder="what's on your mind?"/>
         </div>
         <label>Image:</label>
-        <input type='file' name='image' onChange={handleFileChange}/>
+        <input type='file' name='image' onChange={handleFileChange} />
 
         <button type="submit">Submit</button>
        </form>
