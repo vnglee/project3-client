@@ -6,15 +6,17 @@ import { post } from "../services/authService"
 
 import CreatableSelect from 'react-select/creatable'
 import { Textarea } from "@material-tailwind/react";
+import { fileChange } from "../services/fileChange";
 
 
-const AddPost = () => {
-
+const AddPost = ({posts, setPosts}) => {
   const [addPost, setAddPost] = useState({
     post: "",
     image: "",
     type: "general"
   })
+  
+  console.log('add post', addPost)
 
   const navigate = useNavigate()
 
@@ -22,6 +24,22 @@ const AddPost = () => {
     setAddPost((prev) => ({...prev, [e.target.name]: e.target.value}))
   }
 
+  const handleFileChange = (e) => {
+
+    // setButtonDisabled(true)
+
+    fileChange(e)
+      .then((response) => {
+        console.log(response.data);
+        setAddPost((prev) => ({...prev, [e.target.name]: response.data.image}));
+        // setButtonDisabled(false);
+      })
+      .catch((err) => {
+        // setButtonDisabled(false);
+        console.log("Error while uploading the file: ", err);
+      });
+
+}
 
   const handleSelectChange = (e) => {
     console.log("this is e", e)
@@ -47,13 +65,20 @@ const AddPost = () => {
     post('/posts/create', addPost)
     .then((results) => {
       console.log('new post', results.data)
-      setAddPost({post: ""})
-      navigate('/posts')
+      setAddPost("");
+      setPosts([ results.data, ...posts])
+     
+      console.log('posts', posts)
+      // navigate('/posts')
+      console.log('this is post post', addPost)
 
     })
     .catch((err) => {
       console.log(err)
     })
+  
+
+   
   }
 
 
@@ -85,10 +110,10 @@ const AddPost = () => {
 
        <label>Post</label>
        <div className="w-96">
-        <Textarea label="Message" onChange={handleChange} placeholder="what's on your mind?"/>
+        <Textarea label="Message" name="post" onChange={handleChange} placeholder="what's on your mind?"/>
         </div>
         <label>Image:</label>
-        <input type='text' name='image' onChange={handleChange}/>
+        <input type='file' name='image' onChange={handleFileChange}/>
 
         <button type="submit">Submit</button>
        </form>

@@ -7,6 +7,7 @@ import { LoadingContext } from '../context/loading.context'
 import { AuthContext } from '../context/auth.context'
 
 import { post } from '../services/authService'
+import { fileChange } from '../services/fileChange'
 
 const EditProfile = () => {
 
@@ -20,6 +21,21 @@ const EditProfile = () => {
   const handleTextChange = (e) => {
     setUpdatedUser((prev) => ({...prev, [e.target.name]: e.target.value}))
   }
+
+const handleFileChange = (e) => {
+  // setButtonDisabled(true)
+
+        fileChange(e)
+          .then((response) => {
+            console.log(response.data);
+            setUpdatedUser((prev) => ({...prev, [e.target.name]: response.data.image}));
+            // setButtonDisabled(false);
+          })
+          .catch((err) => {
+            // setButtonDisabled(false);
+            console.log("Error while uploading the file: ", err);
+          });
+}
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -53,7 +69,7 @@ const EditProfile = () => {
         <input id="name" name="name" type="text" value={updatedUser.name} onChange={handleTextChange}/>
       
         <label htmlFor='profilePic'>Profile Picture:</label>
-        <input id="profilePic" name="profilePic" type="text" value={updatedUser.profilePic} onChange={handleTextChange}/>
+        <input id="profilePic" name="profilePic" type="file" onChange={handleFileChange}/>
       <button type="submit">Update</button>
       </form>
       :

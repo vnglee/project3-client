@@ -1,22 +1,27 @@
 
 
-const CommentCard = ({comment, author}) => {
-  console.log('this is comment', comment)
-  console.log('this is author', author)
+const CommentCard = ({comments}) => {
+  console.log('this is comments', comments)
+  // console.log('this is author', author)
+
+  
   return (
     <div>
 
-    {comment && 
+    {comments && 
 
-    (
-      <>
 
-    <h3>{comment.comments}</h3>
-    <p>{comment.author.name}</p>
-      </>
-    )
+      comments.map((comment) => {
+        return (
+          <p>{comment.comment}</p>
+        )
+      })
+    
+ 
+ 
 
     }
+
     </div>
   )
 }

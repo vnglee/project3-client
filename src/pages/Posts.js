@@ -37,7 +37,7 @@ useEffect(() => {
 
     <label htmlFor="check">Reviews </label>
     <input type="checkbox" value="review" onChange={(e) => {e.target.checked ?  setSearch(e.target.value) : setSearch("")}}/>
-     <AddPost />
+     <AddPost posts={posts} setPosts={setPosts}/>
 <br/>
 See Posts:
 <br/><br/>
@@ -50,7 +50,7 @@ See Posts:
 
 <br/>
 <br/>
-{/* <AddComment/> */}
+
     </div>
   )
 }

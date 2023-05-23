@@ -3,8 +3,9 @@ import { useNavigate } from "react-router-dom"
 import { post } from "../services/authService"
 import { LoadingContext } from "../context/loading.context"
 
-const AddComment = () => {
+const AddComment = ({postId, comments, setCommentsArray}) => {
 
+  console.log('post id', postId)
 
 const [addComment, setAddComment] = useState({comment: ""})
 
@@ -18,10 +19,11 @@ const handleChange = (e) => {
 const handleSubmit = (e) => {
   e.preventDefault()
 
-  post('/comments/add-comments', addComment)
+  post(`/comments/add-comment/${postId}`, addComment)
   .then((results) => {
     console.log('new post', results.data)
     setAddComment({comment: ""})
+    setCommentsArray([...comments, addComment])
     // navigate(`/posts/detail/${post._id}`)
 
   })
