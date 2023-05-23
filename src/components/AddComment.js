@@ -22,7 +22,7 @@ const handleSubmit = (e) => {
   .then((results) => {
     console.log('new post', results.data)
     setAddComment({comment: ""})
-    navigate(`/posts/detail/${post._id}`)
+    // navigate(`/posts/detail/${post._id}`)
 
   })
   .catch((err) => {
@@ -33,11 +33,11 @@ const handleSubmit = (e) => {
 
   return (
     <div>
-    Add Comment
+    
 
     <form onSubmit={handleSubmit}>
-        <label>Comment:</label>
-        <input type="text" name="email" value={addComment.comment} onChange={handleChange}/>
+        {/* <label>Comment:</label> */}
+        <input type="text" name="comment" value={addComment.comment} onChange={handleChange}/>
         <button type="submit">Submit</button>
     </form>
     

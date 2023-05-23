@@ -13,7 +13,8 @@ const Posts = () => {
 const [search, setSearch] = useState("")
 const [posts, setPosts] = useState([])
 
-const {postId} = useParams
+// const {postId} = useParams
+
 console.log(search)
 const getAllPosts = () => {
   get('/posts')
@@ -33,6 +34,9 @@ useEffect(() => {
     <div>
     <label htmlFor="check">Recipes </label>
     <input type="checkbox" value="recipe" onChange={(e) => {e.target.checked ?  setSearch(e.target.value) : setSearch("")}}/>
+
+    <label htmlFor="check">Reviews </label>
+    <input type="checkbox" value="review" onChange={(e) => {e.target.checked ?  setSearch(e.target.value) : setSearch("")}}/>
      <AddPost />
 <br/>
 See Posts:

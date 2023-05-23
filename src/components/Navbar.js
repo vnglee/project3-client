@@ -12,7 +12,6 @@ const Navbar = () => {
 
   return (
 
-
    <nav>
    <Link to='/'>Home</Link>
 

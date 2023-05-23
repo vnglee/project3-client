@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom'
 import { post } from "../services/authService"
 
 import CreatableSelect from 'react-select/creatable'
+import { Textarea } from "@material-tailwind/react";
 
 
 const AddPost = () => {
@@ -76,12 +77,16 @@ const AddPost = () => {
     <h3>Add Post</h3>
        <form onSubmit={handleSubmit}>
 
-        <label>Type:</label>
+        {/* <label>Type:</label>
+        <div className="w-96">
+      <Textarea label="Message" />
+    </div> */}
         <CreatableSelect id="selector" isClearable options={theseOptions} onChange={handleSelectChange}/>
 
        <label>Post</label>
-        <textarea name='post' onChange={handleChange} placeholder="what's on your mind?"/>
-
+       <div className="w-96">
+        <Textarea label="Message" onChange={handleChange} placeholder="what's on your mind?"/>
+        </div>
         <label>Image:</label>
         <input type='text' name='image' onChange={handleChange}/>
 

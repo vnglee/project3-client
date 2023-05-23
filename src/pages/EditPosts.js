@@ -1,4 +1,4 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useParams } from "react-router-dom"
 import CreatableSelect from 'react-select/creatable'
 import { useNavigate } from "react-router-dom"
@@ -87,6 +87,23 @@ const EditPosts = () => {
     
   }
 
+  //populate edit entries
+  // useEffect(() => {
+  //   axios 
+  //     .get(`${baseUrl}/posts/${id}`)
+  //     .then((results) => {
+  //       const editData = results.data
+  //       setEdit({
+  //         post: editData.post,
+  //         image: editData.image,
+  //         type: editData.type
+  //       })
+  //     })
+  //     .catch((err) => {
+  //       console.log(err)
+  //     })
+
+  // }, [])
 
   return (
     <div>
