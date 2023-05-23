@@ -1,13 +1,27 @@
-import { useContext } from "react"
+import { useContext, useEffect, useState } from "react"
 import { LoadingContext } from "../context/loading.context"
 import { Link } from "react-router-dom"
 
-
+import { get } from "../services/authService"
 
 const Profile = () => {
 
     const {user} = useContext(LoadingContext)
 
+    const [thisUser, setThisUser] = useState(null)
+
+    useEffect(() => {
+      if (user) {
+        get(`/users/profile/${user._id}`)
+          .then((results) => {
+            console.log('profile results', results.data)
+            setThisUser(results.data)
+          })
+          .catch((err) => {
+            console.log(err)
+          })
+      }
+    }, [user])
 
   return (
     <div>
@@ -20,6 +34,29 @@ const Profile = () => {
         <Link to={`/profile/${user._id}`}><button>Edit Profile</button></Link>
     </div>
     
+    }
+
+    {thisUser ?
+
+      <div>
+
+      {
+        thisUser.posts.map((post) => {
+          return (
+            <div>
+              <p>{post.post}</p>
+            </div>
+          )
+        })
+      }
+
+
+      </div>
+
+      :
+
+      <p>No posts</p>
+
     }
     
     
