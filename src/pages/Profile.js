@@ -27,7 +27,10 @@ const Profile = () => {
 
   return (
     <div>
-    Profile
+    <br/>
+    <br/>
+    <br/>
+    <h2>Profile</h2>
     {user &&
     <div>
         <h3>{user.name}</h3>
@@ -45,9 +48,9 @@ const Profile = () => {
       {
         thisUser.posts.map((post) => {
           return (
-            <div>
-              <p>{post.post}</p>
-        
+            <div key={post._id}>
+              {/* <p>{post.post}</p> */}
+              <Link to={`/posts/detail/${post._id}`}>{post.post}</Link>
             </div>
           )
         })

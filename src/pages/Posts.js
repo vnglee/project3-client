@@ -13,8 +13,12 @@ const Posts = () => {
 // const [search, setSearch] = useState("")
 // const [posts, setPosts] = useState([])
 
-const {search, setSearch, posts, setPosts, getAllPosts} = useContext(LoadingContext)
+const {search, setSearch, posts, setPosts, getAllPosts, user} = useContext(LoadingContext)
+
+// const [ like, setLike] = useState(post.like)
+// const [ isLiked, setIsLiked] = useState()
 // const {postId} = useParams
+
 
 console.log(search)
 
@@ -25,17 +29,10 @@ useEffect(() => {
 
   return (
     <div>
-    {/* <label htmlFor="check">Recipes </label>
-    <input type="checkbox" value="recipe" onChange={(e) => {e.target.checked ?  setSearch(e.target.value) : setSearch("")}}/>
 
-    <label htmlFor="check">Reviews </label>
-    <input type="checkbox" value="review" onChange={(e) => {e.target.checked ?  setSearch(e.target.value) : setSearch("")}}/> */}
+     {user ?
      
-     {/* <div>
-      <Link to="/recipes"><button onClick={() => setSearch("recipe")}>See Recipes</button></Link>
-      <Link to="/reviews"><button onClick={() => setSearch("review")}>See Reviews</button></Link>
-     </div> */}
-     
+     <>
      <AddPost posts={posts} setPosts={setPosts}/>
 <br/>
 See Posts:
@@ -44,7 +41,13 @@ See Posts:
   return (
     <PostCard key={post._id} post={post}/>
   )
-})}
+  })}
+
+  </>
+  :
+
+  <p></p>
+     }
 <br/>
 
 <br/>

@@ -17,28 +17,6 @@ const NavBar = () => {
   }
 
   return (
-
-  //  <nav>
-  //  <Link to='/'>Home</Link>
-
-  //   {
-  //     getToken() ? 
-
-  //      <>
-  //    <Link to='/profile'>Profile</Link>
-  //     <Link to='/posts'>Posts</Link>
-  //    <button onClick={logOutUser}>Logout</button>
-
-  //     </>
-  //     :
-  //    <>
-
-  //    <Link to='/signup'>Signup</Link>
-  //   <Link to='/login'>Login</Link>
-  //     </>
-  //   }
-  //    </nav>
-
       
       <Navbar expand="lg" variant="light" bg="light" fixed="top" >
 
@@ -89,6 +67,8 @@ const NavBar = () => {
 
           </Navbar>
     
+
+
     );
 }
   
@@ -96,3 +76,26 @@ const NavBar = () => {
 
 export default NavBar
 
+
+
+
+// <nav>
+// <Link to='/'>Home</Link>
+
+//  {
+//    getToken() ? 
+
+//     <>
+//   <Link to='/profile'>Profile</Link>
+//    <Link to='/posts'>Posts</Link>
+//   <button onClick={logOutUser}>Logout</button>
+
+//    </>
+//    :
+//   <>
+
+//   <Link to='/signup'>Signup</Link>
+//  <Link to='/login'>Login</Link>
+//    </>
+//  }
+//   </nav>

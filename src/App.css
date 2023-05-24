@@ -16,3 +16,13 @@ form {
   place-items: center center;
 }
 
+.comment-btn {
+  min-width: 25%;
+  width: 25%;
+}
+
+.user-profile-pic {
+  max-width: 5%;
+
+}
+

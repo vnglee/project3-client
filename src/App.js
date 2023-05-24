@@ -48,7 +48,7 @@ function App() {
         <Route path='/profile/:id' element={<EditProfile/>}/>
         <Route path='/posts' element={<Posts/>} />
         <Route path='/posts/edit/:id' element={<EditPosts/>} />
-        <Route path='/posts/details/:id' element={<PostDetails/>} />
+        <Route path='/posts/detail/:id' element={<PostDetails/>} />
         <Route path='/recipes' element={<Recipes/>} />
         <Route path='/reviews' element={<Reviews/>} />
     </Route>

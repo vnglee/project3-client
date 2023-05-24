@@ -127,6 +127,7 @@ const AddPost = ({posts, setPosts}) => {
        <Container className="d-grid h-100" id="login-container">
       <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
+      <CreatableSelect id="selector" isClearable options={theseOptions} onChange={handleSelectChange}/>
         <Form.Label>Post</Form.Label>
         <Form.Control as="textarea" rows={3} type="text" name="post" value={addPost.post} onChange={handleChange} placeholder="what's on your mind?" />
       </Form.Group>
