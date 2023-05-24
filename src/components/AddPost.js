@@ -1,41 +1,41 @@
-import { useState } from "react"
+import { useState } from "react";
 
-import { useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom";
 
-import { post } from "../services/authService"
+import { post } from "../services/authService";
 
-import CreatableSelect from 'react-select/creatable'
+import CreatableSelect from "react-select/creatable";
 import { Textarea } from "@material-tailwind/react";
 import { fileChange } from "../services/fileChange";
 import { Container } from "react-bootstrap";
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
-
-
-const AddPost = ({posts, setPosts}) => {
+const AddPost = ({ posts, setPosts }) => {
   const [addPost, setAddPost] = useState({
     post: "",
     image: "",
-    type: "general"
-  })
-  
-  console.log('add post', addPost)
+    type: "general",
+  });
 
-  const navigate = useNavigate()
+  console.log("add post", addPost);
+
+  const navigate = useNavigate();
 
   const handleChange = (e) => {
-    setAddPost((prev) => ({...prev, [e.target.name]: e.target.value}))
-  }
+    setAddPost((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
 
   const handleFileChange = (e) => {
-
     // setButtonDisabled(true)
 
     fileChange(e)
       .then((response) => {
         console.log(response.data);
-        setAddPost((prev) => ({...prev, [e.target.name]: response.data.image}));
+        setAddPost((prev) => ({
+          ...prev,
+          [e.target.name]: response.data.image,
+        }));
         // e.target.value = null
         // setButtonDisabled(false);
       })
@@ -43,11 +43,10 @@ const AddPost = ({posts, setPosts}) => {
         // setButtonDisabled(false);
         console.log("Error while uploading the file: ", err);
       });
-
-}
+  };
 
   const handleSelectChange = (e) => {
-    console.log("this is e", e)
+    console.log("this is e", e);
     if (!e) {
       setAddPost((prev) => ({
         post: "",
@@ -63,94 +62,84 @@ const AddPost = ({posts, setPosts}) => {
     }
   };
 
-
   const handleSubmit = (e) => {
-    e.preventDefault()
-    console.log('this is the event', e.target[2])
-    post('/posts/create', addPost)
-    .then((results) => {
-    
-      console.log('new post', results.data)
-      setPosts([ results.data, ...posts])
-      setAddPost({
-        post: "",
-        image: undefined,
-        type: "general",
+    e.preventDefault();
+    console.log("this is the event", e.target[2]);
+    post("/posts/create", addPost)
+      .then((results) => {
+        console.log("new post", results.data);
+        setPosts([results.data, ...posts]);
+        setAddPost({
+          post: "",
+          image: undefined,
+          type: "general",
+        });
+        e.target[2].value = null;
+        console.log("posts", posts);
+        // navigate('/posts')
+        console.log("this is post post", addPost);
+      })
+      .catch((err) => {
+        console.log(err);
       });
-      e.target[2].value = null
-      console.log('posts', posts)
-      // navigate('/posts')
-      console.log('this is post post', addPost)
-
-    })
-    .catch((err) => {
-      console.log(err)
-    })
-  
-
-   
-  }
-
+  };
 
   const theseOptions = [
     {
       label: "general",
-      value: "general"
+      value: "general",
     },
     {
       label: "recipe",
-      value: "recipe"
+      value: "recipe",
     },
     {
       label: "review",
-      value: "review"
-    }
+      value: "review",
+    },
   ];
 
   return (
     <div>
-    <h3>Add Post</h3>
-       {/* <form onSubmit={handleSubmit}>
+      <h3>Add Post</h3>
 
-        <CreatableSelect id="selector" isClearable options={theseOptions} onChange={handleSelectChange}/>
+      <Container className="d-grid h-100" id="login-container">
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <CreatableSelect
+              id="selector"
+              isClearable
+              options={theseOptions}
+              onChange={handleSelectChange}
+            />
+            <Form.Label>Post</Form.Label>
+            <Form.Control
+              as="textarea"
+              rows={3}
+              type="text"
+              name="post"
+              value={addPost.post}
+              onChange={handleChange}
+              placeholder="what's on your mind?"
+            />
+          </Form.Group>
 
-       <label>Post</label>
-       <div>
-        <Textarea label="Message" name="post" value={addPost.post} onChange={handleChange} placeholder="what's on your mind?"/>
-        </div>
-        <label>Image:</label>
-        <input type='file' name='image' onChange={handleFileChange} />
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Image</Form.Label>
+            <Form.Control
+              type="file"
+              name="image"
+              onChange={handleFileChange}
+            />
+          </Form.Group>
 
-        <button type="submit">Submit</button>
-       </form> */}
-
-       <Container className="d-grid h-100" id="login-container">
-      <Form onSubmit={handleSubmit}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-      <CreatableSelect id="selector" isClearable options={theseOptions} onChange={handleSelectChange}/>
-        <Form.Label>Post</Form.Label>
-        <Form.Control as="textarea" rows={3} type="text" name="post" value={addPost.post} onChange={handleChange} placeholder="what's on your mind?" />
-      </Form.Group>
-
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Image</Form.Label>
-        <Form.Control type="file" name='image' onChange={handleFileChange}/>
-      </Form.Group>
-
-      <Button variant="primary" type="submit">
-        Post
-      </Button>
-    </Form>
-    </Container>
-
+          <Button variant="primary" type="submit">
+            Post
+          </Button>
+        </Form>
+      </Container>
     </div>
-  )
-}
+  );
+};
 
-export default AddPost
-
-// author: {type: Schema.Types.ObjectId, ref: 'User'},
-// post: String,
-// likes: [{type: Schema.Types.ObjectId, ref: 'User'}],
-// image: String,
-// comment: [{type: Schema.Types.ObjectId, ref: 'Comment'}]
+export default AddPost;

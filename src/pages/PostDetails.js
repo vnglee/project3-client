@@ -1,48 +1,43 @@
-import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
-import { get } from "../services/authService"
-import { Link } from "react-router-dom"
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { get } from "../services/authService";
+import { Link } from "react-router-dom";
 
+const PostDetails = ({ post, image, type }) => {
+  const [postDetail, setPostDetail] = useState(null);
 
-const PostDetails = ({post, image, type}) => {
+  const { id } = useParams();
 
-    const [postDetail, setPostDetail] = useState(null)
+  const getPost = () => {
+    get(`/posts/detail/${id}`)
+      .then((results) => {
+        console.log("getpost results", results.data);
+        setPostDetail(results.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
 
-    const {id} = useParams()
-
-    const getPost = () => {
-        get(`/posts/detail/${id}`)
-        .then((results) => {
-            console.log('getpost results', results.data)
-            setPostDetail(results.data)
-        })
-        .catch((err) => {
-            console.log(err)
-        })
-    }
-
-    useEffect(() => {
-        getPost()
-    }, [])
+  useEffect(() => {
+    getPost();
+  }, []);
 
   return (
     <div>
-    
-    {postDetail && (
+      {postDetail && (
         <>
-           <p>{postDetail.post}</p>
-          <img src={postDetail.image} alt=""/>
-           <p>{postDetail.type}</p>
+          <p>{postDetail.post}</p>
+          <img src={postDetail.image} alt="" />
+          <p>{postDetail.type}</p>
         </>
-    )}
+      )}
 
-    <Link to={`/posts/edit/${id}`}><button>Edit Post</button></Link>
-
-
-
-
+      <Link to={`/posts/edit/${id}`}>
+        <button>Edit Post</button>
+      </Link>
     </div>
-  )
-}
+  );
+};
 
-export default PostDetails
+export default PostDetails;

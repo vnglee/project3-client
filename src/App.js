@@ -12,7 +12,7 @@ import EditPosts from './pages/EditPosts';
 import PostDetails from './pages/PostDetails';
 import Recipes from './pages/Recipes';
 import Reviews from './pages/Reviews';
-import 'bootstrap/dist/css/bootstrap.min.css';
+
 
 function App() {
 
