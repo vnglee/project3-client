@@ -31,10 +31,10 @@ useEffect(() => {
     <label htmlFor="check">Reviews </label>
     <input type="checkbox" value="review" onChange={(e) => {e.target.checked ?  setSearch(e.target.value) : setSearch("")}}/> */}
      
-     <div>
+     {/* <div>
       <Link to="/recipes"><button onClick={() => setSearch("recipe")}>See Recipes</button></Link>
       <Link to="/reviews"><button onClick={() => setSearch("review")}>See Reviews</button></Link>
-     </div>
+     </div> */}
      
      <AddPost posts={posts} setPosts={setPosts}/>
 <br/>

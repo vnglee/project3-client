@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from "react"
 import { LoadingContext } from "../context/loading.context"
-import { Link } from "react-router-dom"
+import { Link, useParams } from "react-router-dom"
 
 import { get } from "../services/authService"
 
@@ -9,6 +9,8 @@ const Profile = () => {
     const {user} = useContext(LoadingContext)
 
     const [thisUser, setThisUser] = useState(null)
+
+    const {id} = useParams
 
     useEffect(() => {
       if (user) {
@@ -29,7 +31,7 @@ const Profile = () => {
     {user &&
     <div>
         <h3>{user.name}</h3>
-        <img className="scale-50" src={user.profilePic} alt='profile' />
+        <img src={user.profilePic} alt='profile' />
     
         <Link to={`/profile/${user._id}`}><button>Edit Profile</button></Link>
     </div>
@@ -45,6 +47,7 @@ const Profile = () => {
           return (
             <div>
               <p>{post.post}</p>
+        
             </div>
           )
         })

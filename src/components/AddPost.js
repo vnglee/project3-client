@@ -7,6 +7,10 @@ import { post } from "../services/authService"
 import CreatableSelect from 'react-select/creatable'
 import { Textarea } from "@material-tailwind/react";
 import { fileChange } from "../services/fileChange";
+import { Container } from "react-bootstrap";
+import Button from 'react-bootstrap/Button';
+import Form from 'react-bootstrap/Form';
+
 
 
 const AddPost = ({posts, setPosts}) => {
@@ -106,23 +110,37 @@ const AddPost = ({posts, setPosts}) => {
   return (
     <div>
     <h3>Add Post</h3>
-       <form onSubmit={handleSubmit}>
+       {/* <form onSubmit={handleSubmit}>
 
-        {/* <label>Type:</label>
-        <div className="w-96">
-      <Textarea label="Message" />
-    </div> */}
         <CreatableSelect id="selector" isClearable options={theseOptions} onChange={handleSelectChange}/>
 
        <label>Post</label>
-       <div className="w-96">
+       <div>
         <Textarea label="Message" name="post" value={addPost.post} onChange={handleChange} placeholder="what's on your mind?"/>
         </div>
         <label>Image:</label>
         <input type='file' name='image' onChange={handleFileChange} />
 
         <button type="submit">Submit</button>
-       </form>
+       </form> */}
+
+       <Container className="d-grid h-100" id="login-container">
+      <Form onSubmit={handleSubmit}>
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Post</Form.Label>
+        <Form.Control as="textarea" rows={3} type="text" name="post" value={addPost.post} onChange={handleChange} placeholder="what's on your mind?" />
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="formBasicEmail">
+        <Form.Label>Image</Form.Label>
+        <Form.Control type="file" name='image' onChange={handleFileChange}/>
+      </Form.Group>
+
+      <Button variant="primary" type="submit">
+        Post
+      </Button>
+    </Form>
+    </Container>
 
     </div>
   )

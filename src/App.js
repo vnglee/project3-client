@@ -4,7 +4,7 @@ import './App.css';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import Navbar from './components/Navbar';
+import NavBar from './components/NavBar';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import Posts from './pages/Posts';
@@ -12,6 +12,7 @@ import EditPosts from './pages/EditPosts';
 import PostDetails from './pages/PostDetails';
 import Recipes from './pages/Recipes';
 import Reviews from './pages/Reviews';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
 
@@ -30,7 +31,7 @@ function App() {
   return (
     <div className="App">
 
-    <Navbar/>
+    <NavBar/>
 
   <Routes>
 
