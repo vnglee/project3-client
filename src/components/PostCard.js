@@ -65,19 +65,20 @@ const PostCard = ({ singlePost, setLiked }) => {
               style={{ width: "10%", padding: "1%" }}
               alt="profile"
             />
-            <h5>{user.name}</h5>
+            {/* <h5>{user.name}</h5> */}
+            <h5>{singlePost.author.name}</h5>
 
             <div className="container">
               <p id="post" className="overflow">
                 {singlePost.post}
               </p>
               {singlePost.image ? (
-              <img
-                src={singlePost.image}
-                alt=""
-                style={{ width: "15rem", height: "15rem" }}
-                className="rounded m-2 float-start"
-              />
+                <img
+                  src={singlePost.image}
+                  alt=""
+                  style={{ width: "15rem", height: "15rem" }}
+                  className="rounded m-2 float-start"
+                />
               ) : (
                 ""
               )}
@@ -120,7 +121,6 @@ const PostCard = ({ singlePost, setLiked }) => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };
