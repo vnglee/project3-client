@@ -8,7 +8,7 @@ import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 
-const NavBar = () => {
+export default function NavBar ()  {
   const { logOutUser } = useContext(AuthContext);
 
   const getToken = () => {
@@ -62,4 +62,4 @@ const NavBar = () => {
   );
 };
 
-export default NavBar;
+

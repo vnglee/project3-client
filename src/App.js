@@ -4,7 +4,7 @@ import './App.css';
 import Home from './pages/Home';
 import Signup from './pages/Signup';
 import Login from './pages/Login';
-import NavBar from './components/Navbar'
+import NavBar from './components/Navbar.js';
 import Profile from './pages/Profile';
 import EditProfile from './pages/EditProfile';
 import Posts from './pages/Posts';
