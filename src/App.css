@@ -3,10 +3,10 @@
   text-align: center;
 }
 
-form {
+/* form {
   display: flex;
   flex-direction: column;
-}
+} */
 
 .right-aligned {
   justify-content: flex-end;
@@ -22,12 +22,22 @@ form {
 }
 
 .user-profile-pic {
-  max-width: 5%;
+  max-width: 9%;
 
 }
 
+.overflow {
+  --max-lines: 3;
+  position: relative;
+  max-height: calc(var(--lh) * var(--max-lines));
+  overflow: hidden;
+  padding-right: 1rem;
+}
+
+
 .container {
   display: flex;
+  text-align: left;
 }
 
 .flex-child {
@@ -39,12 +49,12 @@ form {
   margin-right: 10px;
 } 
 
-#post {
-  white-space: pre-wrap;
+#post-container {
+  max-width: 100%;
 }
 
-#login-container {
-  max-width: 100%;
+#post {
+  white-space: pre-wrap;
 }
 
 #profile {

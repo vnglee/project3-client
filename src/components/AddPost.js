@@ -18,7 +18,7 @@ const AddPost = ({ posts, setPosts }) => {
     type: "general",
   });
 
-  console.log("add post", addPost);
+  // console.log("add post", addPost);
 
   const navigate = useNavigate();
 
@@ -62,17 +62,17 @@ const AddPost = ({ posts, setPosts }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("this is the event", e.target[2]);
+    console.log("this is the event", e.target);
     post("/posts/create", addPost)
       .then((results) => {
         console.log("new post", results.data);
-        setPosts([ ...posts, results.data]);
+        setPosts([results.data, ...posts]);
         setAddPost({
           post: "",
           image: undefined,
           type: "general",
         });
-        e.target[1].value = null;
+        e.target[2].value = null;
         console.log("posts", posts);
         // navigate('/posts')
         console.log("this is post post", addPost);
@@ -101,20 +101,22 @@ const AddPost = ({ posts, setPosts }) => {
     <div>
       <h3>Add Post</h3>
 
-
-      <Container className="d-grid h-100" id="login-container">
+      <Container className="d-grid" id="post-container">
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Select Category</Form.Label>
             <CreatableSelect
               id="selector"
               isClearable
+              value={addPost.type}
               options={theseOptions}
               onChange={handleSelectChange}
             />
+            <br/>
             <Form.Label>Post</Form.Label>
             <Form.Control
               as="textarea"
-              rows={3}
+              rows={6}
               type="text"
               name="post"
               value={addPost.post}

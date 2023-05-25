@@ -8,7 +8,7 @@ import { LoadingContext } from "../context/loading.context";
 import { post } from "../services/authService";
 
 const PostCard = ({ singlePost, setLiked }) => {
-  const [commentsArray, setCommentsArray] = useState(post.comments);
+  const [commentsArray, setCommentsArray] = useState(singlePost.comments);
 
   const [like, setLike] = useState([]);
 
@@ -56,74 +56,33 @@ const PostCard = ({ singlePost, setLiked }) => {
   return (
     <div>
       <div className="container">
-        <div className="opacity-100">
-          <div className="card border-0 shadow my-5">
-            <div className="card-body p-3">
+        <div className="card border-0 shadow my-5">
+          <div className="card-body p-3">
+            <img
+              className="rounded-circle float-start"
+              id="profile"
+              src={user.profilePic}
+              style={{ width: "10%", padding: "1%" }}
+              alt="profile"
+            />
+            <h5>{user.name}</h5>
+
+            <div className="container">
+              <p id="post" className="overflow">
+                {singlePost.post}
+              </p>
+              {singlePost.image ? (
               <img
                 src={singlePost.image}
                 alt=""
-                style={{ width: "30%" }}
+                style={{ width: "15rem", height: "15rem" }}
                 className="rounded m-2 float-start"
               />
-              <p id="post">{singlePost.post}</p>
-              <br />
-              {singlePost.likes.includes(user._id) ? (
-                <Button
-                  onClick={() => {
-                    unlikePost();
-                  }}
-                >
-                  Unlike
-                </Button>
-              ) : (
-                <Button
-                  onClick={() => {
-                    likePost();
-                  }}
-                >
-                  Like
-                </Button>
-              )}
-              <AddComment
-                postId={singlePost._id}
-                comments={commentsArray}
-                setCommentsArray={setCommentsArray}
-              />
-              <CommentCard comments={commentsArray} />
-              {singlePost.author._id === user._id ? (
-                <Link to={`/posts/detail/${singlePost._id}`}>
-                  <Button variant="primary">Edit</Button>
-                </Link>
               ) : (
                 ""
               )}
             </div>
-          </div>
-        </div>
-      </div>
-      {/* <div class="card" style={{width: "40rem"}}>
-  <img src={singlePost.image} class="card-img-top" alt="..."/>
-  <div class="card-body">
-    <h5 class="card-title">Card title</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
-  </div>
-</div> */}
 
-{/* <Card style={{ width: "30rem", height: "50rem" }}>
-        {singlePost.image ? (
-          <Card.Img
-            variant="top"
-            src={singlePost.image}
-            width="50%"
-            height="50%"
-          />
-        ) : (
-          ""
-        )}
-        <Card.Body>
-          <Card.Text>{singlePost.post}</Card.Text>
-          <Card.Body>
             {singlePost.likes.includes(user._id) ? (
               <Button
                 onClick={() => {
@@ -141,22 +100,27 @@ const PostCard = ({ singlePost, setLiked }) => {
                 Like
               </Button>
             )}
+            <div>
+              <br />
+            </div>
+            <hr />
             <AddComment
               postId={singlePost._id}
               comments={commentsArray}
               setCommentsArray={setCommentsArray}
             />
             <CommentCard comments={commentsArray} />
-          </Card.Body>
-          {singlePost.author._id === user._id ? (
-            <Link to={`/posts/detail/${singlePost._id}`}>
-              <Button variant="primary">Edit</Button>
-            </Link>
-          ) : (
-            ""
-          )}
-        </Card.Body>
-      </Card> */}
+            {singlePost.author._id === user._id ? (
+              <Link to={`/posts/detail/${singlePost._id}`}>
+                <Button variant="primary">Edit</Button>
+              </Link>
+            ) : (
+              ""
+            )}
+          </div>
+        </div>
+      </div>
+
     </div>
   );
 };

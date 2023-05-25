@@ -21,7 +21,7 @@ const AddComment = ({ postId, comments, setCommentsArray }) => {
 
     post(`/comments/add-comment/${postId}`, addComment)
       .then((results) => {
-        console.log("new post", results.data);
+        console.log("this is comments", comments);
         setAddComment({ comment: "" });
         setCommentsArray([...comments, addComment]);
         // navigate(`/posts/detail/${post._id}`)
@@ -32,6 +32,8 @@ const AddComment = ({ postId, comments, setCommentsArray }) => {
   };
 
   return (
+
+
     <div>
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="exampleForm.ControlTextarea1">

@@ -4,7 +4,7 @@ import { AuthContext } from "../context/auth.context";
 import { useNavigate } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
+import { Link } from "react-router-dom";
 import { post } from "../services/authService";
 import { Container } from "react-bootstrap";
 
@@ -47,8 +47,9 @@ const Login = () => {
       <br />
       <br />
       <br />
+      <br />
       <Container className="d-grid h-100" id="login-container">
-        <Form className="border" onSubmit={handleSubmit}>
+        <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">
             <Form.Label>Email address</Form.Label>
             <Form.Control
@@ -75,6 +76,8 @@ const Login = () => {
           </Button>
         </Form>
       </Container>
+      <br/>
+      <p>Don't have an account? Signup <Link to='/signup'>here</Link></p>
     </div>
     //  </div>
   );

@@ -1,12 +1,7 @@
 import { useState, useEffect, useContext } from "react";
 import { LoadingContext } from "../context/loading.context";
-import { AuthContext } from "../context/auth.context";
-import { get } from "../services/authService";
 import AddPost from "../components/AddPost";
 import PostCard from "../components/PostCard";
-import AddComment from "../components/AddComment";
-import EditPosts from "./EditPosts";
-import { Link, useParams } from "react-router-dom";
 import Login from "./Login";
 
 const Posts = () => {

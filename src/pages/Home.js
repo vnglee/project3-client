@@ -9,25 +9,29 @@ import { Link } from "react-router-dom";
 
 const Home = ({ setPosts, thisUser }) => {
   const { user, posts } = useContext(LoadingContext);
+
+
   return (
     <Container fluid>
       <Row>
-        <Col md={{ span: 5 }}>
+        <Col md={{ span: 6 }}>
           <br />
           <br />
           <br />
           {user && (
             <div className="container" style={{width: "20rem"}}>
               <div className="card border-0 shadow my-5">
-                <div className="card-body p-5">
-                  <h3>{user.name}</h3>
-
+                <div className="card-body p-3">
+                  <Link to='/profile'>
                   <img
-                    className="rounded"
+                    className="rounded-circle"
                     id="profile"
+                    style={{width: "100%"}}
                     src={user.profilePic}
                     alt="profile"
                   />
+                  </Link>
+                  <h3>{user.name}</h3>
                     {thisUser ? (
         <div>
           {thisUser.posts.map((post) => {

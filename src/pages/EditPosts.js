@@ -166,6 +166,7 @@ const EditPosts = () => {
     <Button variant="primary" type="submit">
       Post
     </Button>
+    <Button onClick={deletePost}>Delete Post</Button> 
   </Form>
 </Container>
       {/* Edit Posts
