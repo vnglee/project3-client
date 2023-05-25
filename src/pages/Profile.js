@@ -4,6 +4,11 @@ import { Link, useParams } from "react-router-dom";
 
 import { get } from "../services/authService";
 
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Button from 'react-bootstrap/Button';
+
 const Profile = () => {
   const { user } = useContext(LoadingContext);
 
@@ -26,35 +31,63 @@ const Profile = () => {
 
   return (
     <div>
-      <br />
-      <br />
-      <br />
-      <h2>Profile</h2>
-      {user && (
-        <div>
-          <h3>{user.name}</h3>
-          <img src={user.profilePic} alt="profile" />
-
-          <Link to={`/profile/${user._id}`}>
-            <button>Edit Profile</button>
-          </Link>
-        </div>
-      )}
-
-      {thisUser ? (
-        <div>
-          {thisUser.posts.map((post) => {
-            return (
-              <div key={post._id}>
-                {/* <p>{post.post}</p> */}
-                <Link to={`/posts/detail/${post._id}`}>{post.post}</Link>
+      <Container>
+        <Row>
+          <Col>
+            <br />
+            <br />
+            <br />
+            <h2>Profile</h2>
+            {user && (
+              <div>
+                <h3>{user.name}</h3>
+                <img
+                  className="rounded"
+                  src={user.profilePic}
+                  alt="profile"
+                  style={{ height: "auto", width: "100%" }}
+                />
+                <br />
+                <br />
+                <Link to={`/profile/${user._id}`}>
+                  <Button variant="secondary">Edit Profile</Button>
+                </Link>
               </div>
-            );
-          })}
-        </div>
-      ) : (
-        <p>No posts</p>
-      )}
+            )}
+          </Col>
+
+          <Col>
+            <br />
+            <br />
+            <br />
+            {thisUser ? (
+              <div>
+                {thisUser.posts.map((post) => {
+                  return (
+                    <div className="text-ellipsis--2">
+                      <div className="container" style={{ width: "50rem" }}>
+                        <div className="d-flex justify-content-center">
+                          <div className="card border-0 shadow my-5">
+                            <div className="card-body p-5">
+                              <div key={post._id}>
+                                <Link to={`/posts/detail/${post._id}`}>
+                                  {post.post}
+                                </Link>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            ) : (
+              <p>No posts</p>
+            )}
+          </Col>
+        </Row>
+      </Container>
     </div>
   );
 };

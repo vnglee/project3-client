@@ -7,6 +7,7 @@ import PostCard from "../components/PostCard";
 import AddComment from "../components/AddComment";
 import EditPosts from "./EditPosts";
 import { Link, useParams } from "react-router-dom";
+import Login from "./Login";
 
 const Posts = () => {
   // const [search, setSearch] = useState("")
@@ -28,6 +29,9 @@ const Posts = () => {
 
   return (
     <div>
+    <br/>
+    <br/>
+    <br/>
       {user ? (
         <>
           <AddPost posts={posts} setPosts={setPosts} />
@@ -42,7 +46,7 @@ const Posts = () => {
             })}
         </>
       ) : (
-        <p></p>
+        <Login/>
       )}
       <br />
 

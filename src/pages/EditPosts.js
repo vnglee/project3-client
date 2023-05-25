@@ -6,6 +6,9 @@ import { get, post } from "../services/authService";
 import axios from "axios";
 import { baseUrl } from "../services/baseUrl";
 import { fileChange } from "../services/fileChange";
+import { Container } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const EditPosts = () => {
   // const [post, setPost] = useState("")
@@ -111,7 +114,7 @@ const EditPosts = () => {
     axios
       .delete(`${baseUrl}/posts/delete/${id}`)
       .then((results) => {
-        navigate("/posts");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -124,7 +127,48 @@ const EditPosts = () => {
 
   return (
     <div>
-      Edit Posts
+<br/>
+<br/>
+<br/>
+<h3>Edit Post</h3>
+
+
+<Container className="d-grid h-100" id="login-container">
+  <Form onSubmit={handleSubmit}>
+    <Form.Group className="mb-3" controlId="formBasicEmail">
+    <CreatableSelect
+          id="selector"
+          isClearable
+          options={theseOptions}
+          onChange={handleSelectChange}
+        />
+      <Form.Label>Post</Form.Label>
+      <Form.Control
+        as="textarea"
+        rows={3}
+        type="text"
+        name="post"
+        value={edit.post}
+          onChange={handleChange}
+          placeholder="what's on your mind?"
+      />
+    </Form.Group>
+
+    <Form.Group className="mb-3" controlId="formBasicEmail">
+      <Form.Label>Image</Form.Label>
+      <Form.Control
+        type="file"
+        name="image"
+        onChange={handleFileChange}
+      />
+    </Form.Group>
+
+    <Button variant="primary" type="submit">
+      Post
+    </Button>
+  </Form>
+</Container>
+      {/* Edit Posts
       <form onSubmit={handleSubmit}>
         <label>Type:</label>
         <CreatableSelect
@@ -147,7 +191,7 @@ const EditPosts = () => {
 
         <button type="submit">Submit</button>
       </form>
-      <button onClick={deletePost}>Delete Post</button>
+      <button onClick={deletePost}>Delete Post</button> */}
     </div>
   );
 };

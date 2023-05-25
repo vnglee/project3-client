@@ -26,3 +26,43 @@ form {
 
 }
 
+.container {
+  display: flex;
+}
+
+.flex-child {
+  flex: 1;
+
+}
+
+.flex-child:first-child {
+  margin-right: 10px;
+} 
+
+#post {
+  white-space: pre-wrap;
+}
+
+#login-container {
+  max-width: 100%;
+}
+
+#profile {
+  max-width: 20%;
+}
+
+.text-ellipsis--2 {
+  text-overflow:ellipsis;
+  overflow:hidden;
+  display: -webkit-box !important;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}
+
+.text-truncate.text-truncate--2{
+  display: -webkit-box !important;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+}

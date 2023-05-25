@@ -55,7 +55,62 @@ const PostCard = ({ singlePost, setLiked }) => {
 
   return (
     <div>
-      <Card style={{ width: "30rem", height: "50rem" }}>
+      <div className="container">
+        <div className="opacity-100">
+          <div className="card border-0 shadow my-5">
+            <div className="card-body p-3">
+              <img
+                src={singlePost.image}
+                alt=""
+                style={{ width: "30%" }}
+                className="rounded m-2 float-start"
+              />
+              <p id="post">{singlePost.post}</p>
+              <br />
+              {singlePost.likes.includes(user._id) ? (
+                <Button
+                  onClick={() => {
+                    unlikePost();
+                  }}
+                >
+                  Unlike
+                </Button>
+              ) : (
+                <Button
+                  onClick={() => {
+                    likePost();
+                  }}
+                >
+                  Like
+                </Button>
+              )}
+              <AddComment
+                postId={singlePost._id}
+                comments={commentsArray}
+                setCommentsArray={setCommentsArray}
+              />
+              <CommentCard comments={commentsArray} />
+              {singlePost.author._id === user._id ? (
+                <Link to={`/posts/detail/${singlePost._id}`}>
+                  <Button variant="primary">Edit</Button>
+                </Link>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+        </div>
+      </div>
+      {/* <div class="card" style={{width: "40rem"}}>
+  <img src={singlePost.image} class="card-img-top" alt="..."/>
+  <div class="card-body">
+    <h5 class="card-title">Card title</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+  </div>
+</div> */}
+
+{/* <Card style={{ width: "30rem", height: "50rem" }}>
         {singlePost.image ? (
           <Card.Img
             variant="top"
@@ -101,7 +156,7 @@ const PostCard = ({ singlePost, setLiked }) => {
             ""
           )}
         </Card.Body>
-      </Card>
+      </Card> */}
     </div>
   );
 };

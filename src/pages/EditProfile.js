@@ -8,6 +8,9 @@ import { AuthContext } from "../context/auth.context";
 
 import { post } from "../services/authService";
 import { fileChange } from "../services/fileChange";
+import { Container } from "react-bootstrap";
+import Button from "react-bootstrap/Button";
+import Form from "react-bootstrap/Form";
 
 const EditProfile = () => {
   const { user, setUser } = useContext(LoadingContext);
@@ -60,7 +63,42 @@ const EditProfile = () => {
 
   return (
     <div>
-      Edit Profile
+<br/>
+<br/><br/>
+<Container className="d-grid h-100" id="login-container">
+          {updatedUser ? (
+        <Form onSubmit={handleSubmit}>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Name</Form.Label>
+            <Form.Control
+              id="name"
+            name="name"
+            type="text"
+            value={updatedUser.name}
+            onChange={handleTextChange}
+            />
+          </Form.Group>
+
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Profile Picture:</Form.Label>
+            <Form.Control
+              id="profilePic"
+            name="profilePic"
+            type="file"
+            onChange={handleFileChange}
+            />
+          </Form.Group>
+          
+          <Button variant="primary" type="submit">
+            Update
+          </Button>
+        </Form>
+        ) : (
+        <p>Loading...</p>
+      )}
+      </Container>
+
+      {/* Edit Profile
       {updatedUser ? (
         <form onSubmit={handleSubmit}>
           <label htmlFor="name">Name:</label>
@@ -83,7 +121,7 @@ const EditProfile = () => {
         </form>
       ) : (
         <p>Loading...</p>
-      )}
+      )} */}
     </div>
   );
 };

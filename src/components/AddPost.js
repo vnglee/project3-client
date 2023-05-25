@@ -27,7 +27,6 @@ const AddPost = ({ posts, setPosts }) => {
   };
 
   const handleFileChange = (e) => {
-    // setButtonDisabled(true)
 
     fileChange(e)
       .then((response) => {
@@ -37,10 +36,9 @@ const AddPost = ({ posts, setPosts }) => {
           [e.target.name]: response.data.image,
         }));
         // e.target.value = null
-        // setButtonDisabled(false);
       })
       .catch((err) => {
-        // setButtonDisabled(false);
+ 
         console.log("Error while uploading the file: ", err);
       });
   };
@@ -68,13 +66,13 @@ const AddPost = ({ posts, setPosts }) => {
     post("/posts/create", addPost)
       .then((results) => {
         console.log("new post", results.data);
-        setPosts([results.data, ...posts]);
+        setPosts([ ...posts, results.data]);
         setAddPost({
           post: "",
           image: undefined,
           type: "general",
         });
-        e.target[2].value = null;
+        e.target[1].value = null;
         console.log("posts", posts);
         // navigate('/posts')
         console.log("this is post post", addPost);
@@ -102,6 +100,7 @@ const AddPost = ({ posts, setPosts }) => {
   return (
     <div>
       <h3>Add Post</h3>
+
 
       <Container className="d-grid h-100" id="login-container">
         <Form onSubmit={handleSubmit}>
