@@ -11,15 +11,16 @@ const CommentCard = ({ comments }) => {
       {/* <div className="user-profile-pic">
     <img className="rounded-circle float-start"
                     id="profile"
-                    src={user.profilePic}
+                    src={comments.author.profilePic}
                     style={{width: "10%", padding: "1%"}}
-                    alt="profile"/>
+                    alt="commentProfile"/>
     </div> */}
 
       {comments &&
         comments.map((comment) => {
-          return <p>{comment.comment}</p>;
+          return <p>{comment.comment}</p>
         })}
+        
     </div>
   );
 };

@@ -3,7 +3,6 @@ import CommentCard from "./CommentCard";
 import AddComment from "./AddComment";
 import { useState, useContext } from "react";
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import { LoadingContext } from "../context/loading.context";
 import { post } from "../services/authService";
 
@@ -61,11 +60,10 @@ const PostCard = ({ singlePost, setLiked }) => {
             <img
               className="rounded-circle float-start"
               id="profile"
-              src={user.profilePic}
+              src={singlePost.author.profilePic}
               style={{ width: "10%", padding: "1%" }}
               alt="profile"
             />
-            {/* <h5>{user.name}</h5> */}
             <h5>{singlePost.author.name}</h5>
 
             <div className="container">

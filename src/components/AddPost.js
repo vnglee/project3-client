@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { post } from "../services/authService";
 
 import CreatableSelect from "react-select/creatable";
-import { Textarea } from "@material-tailwind/react";
 import { fileChange } from "../services/fileChange";
 import { Container } from "react-bootstrap";
 import Button from "react-bootstrap/Button";
@@ -47,39 +46,17 @@ const AddPost = ({ posts, setPosts }) => {
     console.log("this is e", e);
     if (!e) {
       setAddPost((prev) => ({
-        post: "",
-        image: "",
+        post: prev.post,
+        image: prev.image,
         type: "",
       }));
     } else {
-      setAddPost({
-        post: "",
-        image: "",
+      setAddPost((prev) => ({
+        post: prev.post,
+        image: prev.image,
         type: e.value,
-      });
+      }));
     }
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    console.log("this is the event", e.target);
-    post("/posts/create", addPost)
-      .then((results) => {
-        console.log("new post", results.data);
-        setPosts([results.data, ...posts]);
-        setAddPost({
-          post: "",
-          image: undefined,
-          type: "general",
-        });
-        e.target[2].value = null;
-        console.log("posts", posts);
-        // navigate('/posts')
-        console.log("this is post post", addPost);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
   };
 
   const theseOptions = [
@@ -97,6 +74,30 @@ const AddPost = ({ posts, setPosts }) => {
     },
   ];
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    console.log("this is the event", e.target);
+    post("/posts/create", addPost)
+      .then((results) => {
+        console.log("new post", results.data);
+        setPosts([results.data, ...posts]);
+        setAddPost({
+          post: "",
+          image: undefined,
+          type: theseOptions[0],
+        });
+        e.target[2].value = null;
+        console.log("posts", posts);
+        // navigate('/posts')
+        console.log("this is post post", addPost);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+
+  
+
   return (
     <div>
       <h3>Add Post</h3>
@@ -108,7 +109,7 @@ const AddPost = ({ posts, setPosts }) => {
             <CreatableSelect
               id="selector"
               isClearable
-              value={addPost.type}
+              value={addPost.type.value}
               options={theseOptions}
               onChange={handleSelectChange}
             />
