@@ -34,7 +34,7 @@ const Signup = () => {
         console.log("Signup", results.data);
         storeToken(results.data.authToken);
         setUser({ ...results.data.user, name: "", email: "", password: "" });
-        navigate("/profile");
+        navigate("/login");
       })
       .catch((err) => {
         console.log(err);
@@ -50,7 +50,7 @@ const Signup = () => {
       <br />
       <br />
       <br />
-
+      <h3>Sign Up</h3>
       <Container className="d-grid h-100" id="login-container">
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">

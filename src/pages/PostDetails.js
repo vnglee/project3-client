@@ -31,20 +31,19 @@ const PostDetails = ({ post, image, type }) => {
     
     <Container fluid>
       <Row>
-        <Col md={{ span: 6 }}>
+        <Col md={{ span: 6, offset: 3 }}>
     <br/>
     <br/>
     <br/>
-           <div className="container" style={{width: "50rem"}}>
-    <div className="d-flex justify-content-center">
-              <div className="card border-0 shadow my-5">
-                <div className="card-body p-5">
+    <div className="container">
+        <div className="card border-0 shadow my-5">
+          <div className="card-body p-3">
       {postDetail && (
         <>
           <img src={postDetail.image} alt="" style={{ width: "30%" }}
                 className="rounded m-2 float-start"/>
           <p>{postDetail.post}</p>
-          <p>{postDetail.type}</p>
+          <h6>Category:</h6><p>{postDetail.type}</p>
         </>
       )}
 
@@ -54,7 +53,7 @@ const PostDetails = ({ post, image, type }) => {
     </div>
     </div>
     </div>
-    </div>
+  
     </Col>
     </Row>
     </Container>

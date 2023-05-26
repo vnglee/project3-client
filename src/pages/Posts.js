@@ -31,7 +31,7 @@ const Posts = () => {
         <>
           <AddPost posts={posts} setPosts={setPosts} />
           <br />
-          See Posts:
+          Recent Entries:
           <br />
           <br />
           {posts
@@ -41,12 +41,10 @@ const Posts = () => {
             })}
         </>
       ) : (
+        
         <Login/>
+        
       )}
-      <br />
-
-      <br />
-      <br />
     </div>
   );
 };

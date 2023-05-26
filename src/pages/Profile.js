@@ -42,10 +42,10 @@ const Profile = () => {
               <div>
                 <h3>{user.name}</h3>
                 <img
-                  className="rounded"
+                  className="rounded-circle"
                   src={user.profilePic}
                   alt="profile"
-                  style={{ height: "auto", width: "100%" }}
+                  style={{ width: "50%" }}
                 />
                 <br />
                 <br />
@@ -70,7 +70,7 @@ const Profile = () => {
                           <div className="card border-0 shadow my-5">
                             <div className="card-body p-5">
                               <div key={post._id}>
-                                <Link to={`/posts/detail/${post._id}`}>
+                                <Link  style={{ textDecoration: 'none', color: "black" }} to={`/posts/detail/${post._id}`}>
                                   {post.post}
                                 </Link>
                               </div>

@@ -70,6 +70,7 @@ const PostCard = ({ singlePost, setLiked }) => {
               <p id="post" className="overflow">
                 {singlePost.post}
               </p>
+              <div className="img-obj">
               {singlePost.image ? (
                 <img
                   src={singlePost.image}
@@ -77,9 +78,12 @@ const PostCard = ({ singlePost, setLiked }) => {
                   style={{ width: "15rem", height: "15rem" }}
                   className="rounded m-2 float-start"
                 />
+               
               ) : (
                 ""
               )}
+              </div> 
+
             </div>
 
             {singlePost.likes.includes(user._id) ? (
@@ -108,9 +112,12 @@ const PostCard = ({ singlePost, setLiked }) => {
               comments={commentsArray}
               setCommentsArray={setCommentsArray}
             />
+            <br/>
             <CommentCard comments={commentsArray} />
+
+
             {singlePost.author._id === user._id ? (
-              <Link to={`/posts/detail/${singlePost._id}`}>
+              <Link to={`/posts/edit/${singlePost._id}`}>
                 <Button variant="primary">Edit</Button>
               </Link>
             ) : (

@@ -88,7 +88,7 @@ const EditPosts = () => {
       .then((results) => {
         console.log("new post", results.data);
         setEdit({ post: "" });
-        navigate("/posts");
+        navigate("/");
       })
       .catch((err) => {
         console.log(err);
@@ -163,9 +163,11 @@ const EditPosts = () => {
       />
     </Form.Group>
 
-    <Button variant="primary" type="submit">
-      Post
+    <Button variant="primary" type="submit" >
+      Edit Post
     </Button>
+    <br/>
+    <br/>
     <Button onClick={deletePost}>Delete Post</Button> 
   </Form>
 </Container>

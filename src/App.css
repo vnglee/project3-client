@@ -1,6 +1,7 @@
 
 .App {
   text-align: center;
+  background-color: #f9f9f9;
 }
 
 /* form {
@@ -76,3 +77,21 @@
   -webkit-box-orient: vertical;
   white-space: normal;
 }
+
+.login-post {
+  margin: auto;
+  width: 50%;
+
+}
+
+.img-obj {
+  /* width: 100px;
+  height: 200px; */
+  object-fit: scale-down;
+}
+
+.fix {
+  top: 0;
+  position: fixed
+}
+

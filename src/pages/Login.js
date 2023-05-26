@@ -48,6 +48,7 @@ const Login = () => {
       <br />
       <br />
       <br />
+      <h3>Log In</h3>
       <Container className="d-grid h-100" id="login-container">
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3" controlId="formBasicEmail">

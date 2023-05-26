@@ -13,13 +13,13 @@ const Home = ({ setPosts, thisUser }) => {
 
   return (
     <Container fluid>
+      {/* <Row className="justify-content-md-center"> */}
       <Row>
-        <Col md={{ span: 6 }}>
-          <br />
-          <br />
+        <Col md={{ span: 3, offset: 2 }}>
+        <br />
           <br />
           {user && (
-            <div className="container" style={{width: "20rem"}}>
+            <div className="container" style={{width: "20rem", position: "fixed"}}>
               <div className="card border-0 shadow my-5">
                 <div className="card-body p-3">
                   <Link to='/profile'>
@@ -32,7 +32,7 @@ const Home = ({ setPosts, thisUser }) => {
                   />
                   </Link>
                   <h3>{user.name}</h3>
-                    {thisUser ? (
+                    {/* {thisUser ? (
         <div>
           {thisUser.posts.map((post) => {
             return (
@@ -44,16 +44,15 @@ const Home = ({ setPosts, thisUser }) => {
         </div>
       ) : (
         <p>No posts</p>
-      )}
+      )} */}
+                </div>
                 </div>
               </div>
-            </div>
+      
           )}
         </Col>
-        <Col md={{ span: 6 }}>
-          <br />
-          <br />
-          <br />
+        <Col md={{ span: 5, offset: 5 }}>
+          
           <Post />
         </Col>
       </Row>

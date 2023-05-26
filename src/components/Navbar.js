@@ -16,7 +16,7 @@ export default function NavBar ()  {
   };
 
   return (
-    <Navbar expand="lg" variant="light" bg="light" fixed="top">
+    <Navbar expand="lg" variant="dark" bg="dark" fixed="top">
       {getToken() ? (
         <>
           <Container>
