@@ -98,30 +98,6 @@ const EditProfile = () => {
       )}
       </Container>
 
-      {/* Edit Profile
-      {updatedUser ? (
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="name">Name:</label>
-          <input
-            id="name"
-            name="name"
-            type="text"
-            value={updatedUser.name}
-            onChange={handleTextChange}
-          />
-
-          <label htmlFor="profilePic">Profile Picture:</label>
-          <input
-            id="profilePic"
-            name="profilePic"
-            type="file"
-            onChange={handleFileChange}
-          />
-          <button type="submit">Update</button>
-        </form>
-      ) : (
-        <p>Loading...</p>
-      )} */}
     </div>
   );
 };

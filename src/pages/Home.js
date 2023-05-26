@@ -32,19 +32,7 @@ const Home = ({ setPosts, thisUser }) => {
                   />
                   </Link>
                   <h3>{user.name}</h3>
-                    {/* {thisUser ? (
-        <div>
-          {thisUser.posts.map((post) => {
-            return (
-              <div key={post._id}>
-                <Link to={`/posts/detail/${post._id}`}>{post.post}</Link>
-              </div>
-            );
-          })}
-        </div>
-      ) : (
-        <p>No posts</p>
-      )} */}
+        
                 </div>
                 </div>
               </div>

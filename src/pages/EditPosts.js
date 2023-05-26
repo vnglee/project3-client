@@ -171,30 +171,7 @@ const EditPosts = () => {
     <Button onClick={deletePost}>Delete Post</Button> 
   </Form>
 </Container>
-      {/* Edit Posts
-      <form onSubmit={handleSubmit}>
-        <label>Type:</label>
-        <CreatableSelect
-          id="selector"
-          isClearable
-          options={theseOptions}
-          onChange={handleSelectChange}
-        />
-
-        <label>Post</label>
-        <textarea
-          name="post"
-          value={edit.post}
-          onChange={handleChange}
-          placeholder="what's on your mind?"
-        />
-
-        <label>Image:</label>
-        <input type="file" name="image" onChange={handleFileChange} />
-
-        <button type="submit">Submit</button>
-      </form>
-      <button onClick={deletePost}>Delete Post</button> */}
+   
     </div>
   );
 };
