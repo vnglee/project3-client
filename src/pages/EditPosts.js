@@ -145,7 +145,7 @@ const EditPosts = () => {
       <Form.Label>Post</Form.Label>
       <Form.Control
         as="textarea"
-        rows={3}
+        rows={6}
         type="text"
         name="post"
         value={edit.post}

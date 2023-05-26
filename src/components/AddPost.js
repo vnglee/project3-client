@@ -114,14 +114,6 @@ const AddPost = ({ posts, setPosts }) => {
               onChange={handleSelectChange}
             />
             <br/>
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-            <Form.Label>Image</Form.Label>
-            <Form.Control
-              type="file"
-              name="image"
-              onChange={handleFileChange}
-            />
-          </Form.Group>
           
             <Form.Label>Post</Form.Label>
             <Form.Control
@@ -132,6 +124,14 @@ const AddPost = ({ posts, setPosts }) => {
               value={addPost.post}
               onChange={handleChange}
               placeholder="what's on your mind?"
+            />
+          </Form.Group>
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+            <Form.Label>Image</Form.Label>
+            <Form.Control
+              type="file"
+              name="image"
+              onChange={handleFileChange}
             />
           </Form.Group>
 
